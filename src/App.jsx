@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './components/Login';  // Correct path based on folder structure
+import Login from './components/Login'; 
 
 const App = () => {
   return (

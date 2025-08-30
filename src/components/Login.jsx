@@ -14,9 +14,9 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-blue-800 bg-cover bg-center relative"  // Added bg-blue-800 as fallback
+      className="min-h-screen flex items-center justify-center bg-blue-800 bg-cover bg-center relative"
       style={{
-        backgroundImage: `url(${bgImage})`,  // Correct usage of imported image
+        backgroundImage: `url(${bgImage})`, 
       }}
     >
       {/* Blue overlay */}
