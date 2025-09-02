@@ -32,7 +32,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 flex-grow">
+      <section className="flex flex-col items-center justify-center text-center py-20 flex-grow">
         <h2 className="text-4xl font-bold mb-4 text-gray-800">
           Welcome to HR Management System
         </h2>
@@ -46,7 +46,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 p-8 bg-white">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 p-8">
         <div className="shadow-lg rounded-2xl p-6 flex items-center gap-4">
           <div className="text-blue-600 text-2xl">👥</div>
           <div>
