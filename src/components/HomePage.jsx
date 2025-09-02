@@ -1,8 +1,17 @@
 import React from "react";
+import bgImage from "../assets/homepage.jpeg";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Navbar */}
       <header className="flex justify-between items-center p-4 bg-blue-600 text-white shadow-md">
         <h1 className="text-2xl font-bold">HR Management</h1>
