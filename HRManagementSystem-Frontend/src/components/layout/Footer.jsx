@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 py-12">
                  <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                     <div className="col-span-2 md:col-span-1">
-                        <h3 className="text-xl font-bold text-gray-900">WorkFlow</h3>
+                        <h3 className="text-xl font-bold text-gray-900">WorkBridge</h3>
                         <p className="mt-2 text-sm max-w-xs">
                             Find top-tier talent effortlessly. From entry-level to executive roles, we connect you with the right candidates.
                         </p>

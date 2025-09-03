@@ -16,7 +16,7 @@ const Testimonials = () => {
                     <div className="md:w-2/3 text-left">
                         <p className="text-6xl text-green-500 font-serif -mt-4">“</p>
                         <p className="text-gray-700 italic text-lg -mt-4">
-                        "WorkFlow provided exceptional recruitment services. They truly understood our needs and delivered top-notch candidates. Their personalized approach and attention to detail made the entire process smooth and efficient."
+                        "WorkBridge provided exceptional recruitment services. They truly understood our needs and delivered top-notch candidates. Their personalized approach and attention to detail made the entire process smooth and efficient."
                         </p>
                         <p className="font-bold text-gray-900 mt-4">Donald Juke - CEO of Nore, Inc</p>
                     </div>

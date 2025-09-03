@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { WorkBridgeLogoIcon } from '../ui/Icons';
 
 const Navbar = () => {
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    // State to hold the currently selected signup role
+    const [selectedRole, setSelectedRole] = useState('user'); 
+    
+    // useNavigate hook for programmatic navigation
+    const navigate = useNavigate();
+
+    // Function to handle the signup button click
+    const handleSignup = () => {
+      // Navigate to the corresponding signup page based on the selected role
+      if (selectedRole) {
+        navigate(`/signup/${selectedRole}`);
+      }
+    };
 
     return (
         <header className="bg-green-800 text-white sticky top-0 z-50 shadow-md">
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <Link to="/" className="text-2xl font-bold">WorkFlow</Link>
+                <Link to="/" className="text-2xl font-bold flex items-center">
+                    <WorkBridgeLogoIcon />
+                    WorkBridge
+                </Link>
                 <div className="hidden md:flex items-center space-x-6">
                     <Link to="/" className="hover:text-green-300 transition-colors">Home</Link>
                     <a href="/#solutions" className="hover:text-green-300 transition-colors">Solutions</a>
@@ -18,22 +34,27 @@ const Navbar = () => {
                     <Link to="/login" className="px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors">
                         Login
                     </Link>
-                    <div className="relative">
+                    
+                    {/* --- NEW SIGNUP CONTROLS --- */}
+                    <div className="flex items-center space-x-2">
+                        {/* Role Selection Dropdown */}
+                        <select
+                            value={selectedRole}
+                            onChange={(e) => setSelectedRole(e.target.value)}
+                            className="bg-green-700 text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+                        >
+                            <option value="user">User</option>
+                            <option value="hr">HR</option>
+                            <option value="admin">Admin</option>
+                        </select>
+
+                        {/* Signup Button */}
                         <button
-                            onClick={() => setDropdownOpen(!isDropdownOpen)}
-                            onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
-                            className="bg-white text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors flex items-center"
+                            onClick={handleSignup}
+                            className="bg-white text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors"
                         >
                             Signup
-                            <svg className={`w-4 h-4 ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        {isDropdownOpen && (
-                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
-                                <Link to="/signup/user" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">User</Link>
-                                <Link to="/signup/hr" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">HR</Link>
-                                <Link to="/signup/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin</Link>
-                            </div>
-                        )}
                     </div>
                 </div>
             </nav>
