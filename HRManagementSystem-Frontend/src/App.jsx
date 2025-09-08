@@ -2,20 +2,27 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
-import UserSignup from './pages/UserSignup'; // Import User Signup
-import HrSignup from './pages/HrSignup';     // Import HR Signup
-import AdminSignup from './pages/AdminSignup'; // Import Admin Signup
+import AdminSignup from './pages/AdminSignup'; // Keep Admin Signup
+import AdminDashboard from './pages/dashboards/AdminDashboard';
+import HrDashboard from './pages/dashboards/HrDashboard';
+import UserDashboard from './pages/dashboards/UserDashboard';
+
+// HrSignup and UserSignup are no longer imported
 
 function App() {
   return (
     <Routes>
+      {/* Landing and Auth Routes */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
-      
-      {/* Role-based signup routes */}
-      <Route path="/signup/user" element={<UserSignup />} />
-      <Route path="/signup/hr" element={<HrSignup />} />
       <Route path="/signup/admin" element={<AdminSignup />} />
+
+      {/* The routes for /signup/user and /signup/hr have been removed */}
+
+      {/* Dashboard Routes */}
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/hr/dashboard" element={<HrDashboard />} />
+      <Route path="/user/dashboard" element={<UserDashboard />} />
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // <-- Import useNavigate
 import bgImage from '../assets/Image/LoginBgImg.jpg';
 import { WorkBridgeLogoIcon, HomeIcon } from '../components/ui/Icons';
 
@@ -7,10 +7,23 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState(""); // <-- Add error state
+  const navigate = useNavigate(); // <-- Initialize useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password, rememberMe });
+    setError(""); // Clear previous errors
+
+    // --- DEMO LOGIN LOGIC ---
+    if (email === 'admin@workbridge.com' && password === 'admin1234') {
+      navigate('/admin/dashboard');
+    } else if (email === 'hr@workbridge.com' && password === 'hr1234') {
+      navigate('/hr/dashboard');
+    } else if (email === 'user@workbridge.com' && password === 'user1234') {
+      navigate('/user/dashboard');
+    } else {
+      setError("Invalid credentials. Please try again with the demo accounts.");
+    }
   };
 
   return (
@@ -18,8 +31,8 @@ const Login = () => {
       className="min-h-screen flex items-center justify-center bg-green-800 bg-cover bg-center relative"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <Link 
-        to="/" 
+      <Link
+        to="/"
         className="absolute top-6 right-6 text-white bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors z-20"
         aria-label="Back to Home"
       >
@@ -30,7 +43,6 @@ const Login = () => {
 
       <div className="relative z-10 w-full max-w-md bg-white/10 backdrop-blur-md rounded-2xl shadow-lg px-8 py-10">
         
-        {/* --- UPDATED LOGO AND BRANDING --- */}
         <div className="text-center mb-8">
           <Link to="/" className="text-white text-3xl font-extrabold flex items-center justify-center hover:opacity-90 transition-opacity">
             <WorkBridgeLogoIcon />
@@ -40,6 +52,9 @@ const Login = () => {
             Your Trusted Partner in HR Excellence
           </p>
         </div>
+
+        {/* --- ERROR MESSAGE DISPLAY --- */}
+        {error && <div className="mb-4 p-3 bg-red-500/50 text-white rounded-lg text-center font-semibold">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
