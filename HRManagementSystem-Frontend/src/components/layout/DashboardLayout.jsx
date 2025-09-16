@@ -39,10 +39,10 @@
                 { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Performance', to: '#' },
             ],
             user: [
-                { icon: <ChartBarIcon className="h-5 w-5" />, text: 'My Dashboard', to: '/user/dashboard' },
-                { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '/user/leave-application' },
-                { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payslips', to: '#' },
-                { icon: <DocumentTextIcon className="h-5 w-5" />, text: 'Documents', to: '#' },
+            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'My Dashboard', to: '/user/dashboard' },
+            { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '/user/leave-application' },
+            { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payslips', to: '/user/payslips' },
+            { icon: <DocumentTextIcon className="h-5 w-5" />, text: 'Documents', to: '#' },
             ],
         };
 

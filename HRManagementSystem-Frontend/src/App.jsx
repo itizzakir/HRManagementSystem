@@ -7,6 +7,7 @@ import AdminDashboard from "./pages/dashboards/AdminDashboard";
 import HrDashboard from "./pages/dashboards/HrDashboard";
 import UserDashboard from "./pages/dashboards/UserDashboard";
 import LeaveApplication from "./pages/LeaveApplication";
+import Payslips from "./pages/Payslips";
 
 // HrSignup and UserSignup are no longer imported
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/hr/dashboard" element={<HrDashboard />} />
       <Route path="/user/dashboard" element={<UserDashboard />} />
       <Route path="/user/leave-application" element={<LeaveApplication />} />
+      <Route path="/user/payslips" element={<Payslips />} />
     </Routes>
   );
 }
