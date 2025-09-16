@@ -18,8 +18,8 @@
         const [isSidebarOpen, setSidebarOpen] = useState(true);
 
         const commonLinks = [
-            { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '#' },
-            { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' },
+        { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: `/${role}/profile` },
+        { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' },
         ];
 
         const roleLinks = {
