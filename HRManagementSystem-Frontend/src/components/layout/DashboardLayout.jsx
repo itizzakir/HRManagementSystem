@@ -1,17 +1,27 @@
     import React, { useState } from 'react';
     import { Link, useNavigate } from 'react-router-dom';
-    import {
-        WorkBridgeLogoIcon,
-        ChartBarIcon, UsersIcon, BriefcaseIcon, CurrencyDollarIcon,
-        CalendarDaysIcon, UserCircleIcon, CogIcon, ShieldCheckIcon, LogoutIcon, DocumentTextIcon
-    } from '../ui/Icons';
+import {
+    WorkBridgeLogoIcon,
+    ChartBarIcon, UsersIcon, BriefcaseIcon, CurrencyDollarIcon,
+    CalendarDaysIcon, UserCircleIcon, CogIcon, ShieldCheckIcon, LogoutIcon, DocumentTextIcon
+} from '../ui/Icons';
 
-    const SidebarLink = ({ icon, text, to, active }) => (
+const SidebarLink = ({ icon, text, to, active }) => {
+    if (to === '#') {
+        return (
+            <span className="flex items-center px-4 py-2.5 rounded-lg text-gray-500 cursor-not-allowed select-none">
+                {icon}
+                <span className="ml-3">{text}</span>
+            </span>
+        );
+    }
+    return (
         <Link to={to} className={`flex items-center px-4 py-2.5 rounded-lg transition-colors duration-200 ${active ? 'bg-green-700 text-white' : 'text-gray-300 hover:bg-green-700 hover:text-white'}`}>
             {icon}
             <span className="ml-3">{text}</span>
         </Link>
     );
+};
 
     const DashboardLayout = ({ children, role, title, userName, userEmail }) => {
         const navigate = useNavigate();
@@ -19,7 +29,7 @@
 
         const commonLinks = [
         { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: `/${role}/profile` },
-        { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' },
+        { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: `/${role}/settings` },
         ];
 
         const roleLinks = {
@@ -42,7 +52,6 @@
             { icon: <ChartBarIcon className="h-5 w-5" />, text: 'My Dashboard', to: '/user/dashboard' },
             { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '/user/leave-application' },
             { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payslips', to: '/user/payslips' },
-            { icon: <DocumentTextIcon className="h-5 w-5" />, text: 'Documents', to: '#' },
             ],
         };
 
@@ -55,13 +64,13 @@
             <div className="flex h-screen bg-gray-100 font-sans">
                 {/* Sidebar */}
                 <aside className={`flex-shrink-0 ${isSidebarOpen ? 'w-64' : 'w-20'} bg-green-800 text-white flex flex-col transition-width duration-300`}>
-                    <div className="h-16 flex items-center justify-center border-b border-green-900 flex-shrink-0">
-                        <WorkBridgeLogoIcon />
-                        {isSidebarOpen && <span className="ml-2 text-xl font-bold">WorkBridge</span>}
-                    </div>
+                <div className="h-16 flex items-center justify-center border-b border-green-900 flex-shrink-0">
+                    <WorkBridgeLogoIcon />
+                    {isSidebarOpen && <span className="ml-2 text-xl font-bold">WorkBridge</span>}
+                </div>
                     <nav className="flex-1 px-4 py-6 space-y-2">
                         {roleLinks[role].map(link => (
-                            <SidebarLink key={link.text} {...link} active={window.location.pathname === link.to} />
+                            <SidebarLink key={link.text} {...link} active={window.location.pathname.startsWith(link.to)} />
                         ))}
                     </nav>
                     <div className="px-4 py-6 border-t border-green-900 space-y-2">

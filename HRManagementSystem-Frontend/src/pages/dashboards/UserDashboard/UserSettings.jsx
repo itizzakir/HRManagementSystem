@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserSettings = () => {
+  const navigate = useNavigate();
   const [settings, setSettings] = useState({
     emailNotifications: true,
-    darkMode: false,
     language: "en",
   });
-
-  useEffect(() => {
-    if (settings.darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [settings.darkMode]);
 
   const handleInputChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -28,8 +21,15 @@ const UserSettings = () => {
   };
 
   return (
-    <div className="p-8 max-w-3xl mx-auto bg-white rounded shadow">
-      <h2 className="text-2xl font-semibold mb-6">User Settings</h2>
+    <div className="p-8">
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+      >
+        Back
+      </button>
+      <div className="max-w-3xl mx-auto bg-white rounded shadow p-8">
+        <h2 className="text-2xl font-semibold mb-6">User Settings</h2>
       <div className="mb-4">
         <label className="inline-flex items-center">
           <input
@@ -42,18 +42,7 @@ const UserSettings = () => {
           <span className="ml-2">Enable Email Notifications</span>
         </label>
       </div>
-      <div className="mb-4">
-        <label className="inline-flex items-center">
-          <input
-            type="checkbox"
-            name="darkMode"
-            checked={settings.darkMode}
-            onChange={handleInputChange}
-            className="form-checkbox"
-          />
-          <span className="ml-2">Enable Dark Mode</span>
-        </label>
-      </div>
+
       <div className="mb-6">
         <label className="block mb-2">Language</label>
         <select
@@ -73,6 +62,7 @@ const UserSettings = () => {
       >
         Save Settings
       </button>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../../components/layout/DashboardLayout";
+import ProfileImg from "../../../assets/Image/ProfileImg.png";
+
 import {
   CalendarDaysIcon,
   CurrencyDollarIcon,
@@ -63,25 +65,25 @@ const UserDashboard = () => {
               actionText="Edit Profile"
               onAction={handleProfileClick}
             >
-              <button
-                onClick={handleProfileClick}
-                className="w-full flex items-center space-x-4 cursor-pointer select-none bg-transparent border-none p-0"
-                type="button"
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    handleProfileClick();
-                  }
-                }}
-              >
-                <UserCircleIcon className="h-16 w-16 text-gray-400" />
-                <div>
-                  <p className="font-bold text-lg">Aftab Alam</p>
-                  <p className="text-gray-600">Software Engineer</p>
-                  <p className="text-sm text-gray-500">john.s@example.com</p>
-                </div>
-              </button>
+                <button
+                  onClick={handleProfileClick}
+                  className="w-full flex items-center space-x-4 cursor-pointer select-none bg-transparent border-none p-0"
+                  type="button"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      handleProfileClick();
+                    }
+                  }}
+                >
+                  <img src={ProfileImg} alt="Profile" className="h-16 w-16 rounded-full object-cover" />
+                  <div>
+                    <p className="font-bold text-lg">Aftab Alam</p>
+                    <p className="text-gray-600">java Fullstack Devloper</p>
+                    <p className="text-sm text-gray-500">john.s@example.com</p>
+                  </div>
+                </button>
             </InfoCard>
 
             {/* RECOMMENDED: My Team / Directory */}
@@ -90,14 +92,14 @@ const UserDashboard = () => {
                 <li className="flex items-center space-x-3">
                   <UserCircleIcon className="h-8 w-8 text-gray-400" />
                   <div>
-                    <p className="font-semibold text-sm">Jane Doe</p>
+                    <p className="font-semibold text-sm">Zakir Hussain</p>
                     <p className="text-xs text-gray-500">HR Manager</p>
                   </div>
                 </li>
                 <li className="flex items-center space-x-3">
                   <UserCircleIcon className="h-8 w-8 text-gray-400" />
                   <div>
-                    <p className="font-semibold text-sm">Bob Williams</p>
+                    <p className="font-semibold text-sm">Ankul Sharma</p>
                     <p className="text-xs text-gray-500">Senior Engineer</p>
                   </div>
                 </li>

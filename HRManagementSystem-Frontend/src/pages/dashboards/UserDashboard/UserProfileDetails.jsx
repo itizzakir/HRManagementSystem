@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import DashboardLayout from "../../../components/layout/DashboardLayout";
 import { PencilIcon } from "../../../components/ui/Icons";
-import profileImg from "../../../assets/Image/profileImg.png";
+import profileImg from "../../../assets/Image/profileimg.png";
 
 const menuItems = [
   "Personal Details",
   "Contact Details",
-  "Next of kin Details",
   "Education Qualifications",
-  "Guarantor Details",
-  "Family Details",
-  "Job Details",
-  "Financial Details",
 ];
 
 const UserProfile = () => {
@@ -133,71 +128,6 @@ const UserProfile = () => {
             </div>
           </div>
         );
-      case "Next of kin Details":
-        return (
-          <div className="bg-white p-6 rounded-lg shadow w-full">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold">Next of kin Details</h2>
-            </div>
-            <div className="grid grid-cols-2 gap-6 max-w-4xl">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Next of kin name
-                </label>
-                <input
-                  type="text"
-                  defaultValue="John Doe Samson"
-                  className="w-full bg-blue-100 rounded-md p-2"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Job / Occupation
-                </label>
-                <input
-                  type="text"
-                  defaultValue="IT Manager"
-                  className="w-full bg-blue-100 rounded-md p-2"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  defaultValue="08120000000"
-                  className="w-full bg-blue-100 rounded-md p-2"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Relationship
-                </label>
-                <select className="w-full bg-blue-100 rounded-md p-2">
-                  <option>Relative</option>
-                  <option>Friend</option>
-                  <option>Colleague</option>
-                </select>
-              </div>
-              <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Residential Address
-                </label>
-                <textarea
-                  defaultValue="18 Junction site Lekki"
-                  className="w-full bg-blue-100 rounded-md p-2"
-                  rows={3}
-                />
-              </div>
-              <div className="col-span-2">
-                <button className="bg-green-600 text-white font-semibold px-6 py-2 rounded hover:bg-green-700">
-                  Update
-                </button>
-              </div>
-            </div>
-          </div>
-        );
       default:
         return <div>Select a menu item to view details.</div>;
     }
@@ -238,4 +168,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-</create_file>
