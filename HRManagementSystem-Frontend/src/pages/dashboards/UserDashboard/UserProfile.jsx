@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DashboardLayout from "../../../components/layout/DashboardLayout";
 import { PencilIcon } from "../../../components/ui/Icons";
-import profileImg from "../../assets/Image/profileImg.png";
+import profileImg from "@/assets/Image/profileimg.png";
 
 const menuItems = [
   "Personal Details",
