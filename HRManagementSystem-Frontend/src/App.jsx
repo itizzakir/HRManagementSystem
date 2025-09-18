@@ -11,6 +11,7 @@ import Payslips from "./pages/dashboards/UserDashboard/Payslips";
 import UserProfile from "./pages/dashboards/UserDashboard/UserProfile";
 import UserSettings from "./pages/dashboards/UserDashboard/UserSettings";
 import DashboardLayout from "./components/layout/DashboardLayout";
+import UserProfileEdit from "./pages/dashboards/UserDashboard/UserProfileEdit";
 
 // HrSignup and UserSignup are no longer imported
 
@@ -42,6 +43,7 @@ function App() {
       />
       <Route path="/user/dashboard" element={<UserDashboard />} />
       <Route path="/user/profile" element={<UserProfile />} />
+      <Route path="/user/profile/edit" element={<UserProfileEdit />} />
       <Route path="/user/leave-application" element={<LeaveApplication />} />
       <Route path="/user/payslips" element={<Payslips />} />
     </Routes>
