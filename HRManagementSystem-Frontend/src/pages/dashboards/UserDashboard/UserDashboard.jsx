@@ -80,7 +80,7 @@ const UserDashboard = () => {
                   <img src={ProfileImg} alt="Profile" className="h-16 w-16 rounded-full object-cover" />
                   <div>
                     <p className="font-bold text-lg">Aftab Alam</p>
-                    <p className="text-gray-600">java Fullstack Devloper</p>
+                    <p className="text-gray-600">Java Fullstack Devloper</p>
                     <p className="text-sm text-gray-500">john.s@example.com</p>
                   </div>
                 </button>

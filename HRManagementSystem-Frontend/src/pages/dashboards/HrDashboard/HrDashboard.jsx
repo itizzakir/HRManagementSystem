@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../components/layout/DashboardLayout';
-import { UsersIcon, BriefcaseIcon, CurrencyDollarIcon, CalendarDaysIcon } from '../../components/ui/Icons';
-import CreateUserModal from '../../components/modals/CreateUserModal';
+import DashboardLayout from '../../../components/layout/DashboardLayout';
+import { UsersIcon, BriefcaseIcon, CurrencyDollarIcon, CalendarDaysIcon } from '../../../components/ui/Icons';
+import CreateUserModal from '../../../components/modals/CreateUserModal';
 
 const StatCard = ({ title, value, icon, color }) => (
     <div className="bg-white p-6 rounded-lg shadow">
