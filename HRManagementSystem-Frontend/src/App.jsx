@@ -8,11 +8,10 @@ import AdminSignup from './pages/AdminSignup';
 
 // --- Onboarding Flow Pages ---
 import ForceResetPassword from './pages/ForcedResetPassword';
-// import AcceptInvitePage from './pages/AcceptInvitePage';
 
 // --- Dashboard Home Pages ---
 import AdminDashboard from './pages/dashboards/AdminDashboard/AdminDashboard';
-import HrDashboard from './pages/dashboards/HrDashboard';
+import HrDashboard from './pages/dashboards/HrDashboard/HrDashboard';
 import UserDashboard from './pages/dashboards/UserDashboard/UserDashboard';
 
 // --- User Dashboard Sub-Pages ---
@@ -30,6 +29,15 @@ import ReportsPage from './pages/dashboards/AdminDashboard/ReportsPage';
 import ProfilePage from './pages/dashboards/AdminDashboard/ProfilePage';
 import SettingsPage from './pages/dashboards/AdminDashboard/SettingsPage';
 
+// --- HR Section Pages ---
+import EmployeesPage from './pages/dashboards/HrDashboard/EmployeesPage';
+import RecruitmentPage from './pages/dashboards/HrDashboard/RecruitmentPage';
+import LeaveManagementPage from './pages/dashboards/HrDashboard/LeaveManagementPage';
+import PayrollPage from './pages/dashboards/HrDashboard/PayrollPage';
+import HrProfilePage from './pages/dashboards/HrDashboard/HrProfilePage';
+import HrSettingsPage from './pages/dashboards/HrDashboard/HrSettingsPage';
+import HrProfileEditPage from './pages/dashboards/HrDashboard/HrProfileEditPage';
+
 function App() {
   return (
     <Routes>
@@ -40,7 +48,6 @@ function App() {
       
       {/* --- Onboarding Routes for New Users --- */}
       <Route path="/force-reset-password" element={<ForceResetPassword />} />
-      {/* <Route path="/accept-invite" element={<AcceptInvitePage />} /> */}
 
       {/* --- Admin Routes --- */}
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -52,24 +59,32 @@ function App() {
       <Route path="/admin/settings" element={<SettingsPage />} />
       <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
 
-      {/* --- HR Dashboard Route (Example) --- */}
+      {/* --- HR Routes --- */}
       <Route path="/hr/dashboard" element={<HrDashboard />} />
+      <Route path="/hr/employees" element={<EmployeesPage />} />
+      <Route path="/hr/recruitment" element={<RecruitmentPage />} />
+      <Route path="/hr/leave" element={<LeaveManagementPage />} />
+      <Route path="/hr/payroll" element={<PayrollPage />} />
+      <Route path="/hr/profile" element={<HrProfilePage />} />
+      <Route path="/hr/profile/edit" element={<HrProfileEditPage />} />
+      <Route path="/hr/settings" element={<HrSettingsPage />} />
+      <Route path="/hr" element={<Navigate to="/hr/dashboard" />} />
 
-      {/* --- User Routes (Now clean and consistent) --- */}
+      {/* --- User Routes --- */}
       <Route path="/user/dashboard" element={<UserDashboard />} />
       <Route path="/user/profile" element={<UserProfile />} />
       <Route path="/user/profile/edit" element={<UserProfileEdit />} />
       <Route path="/user/leave-application" element={<LeaveApplication />} />
       <Route path="/user/payslips" element={<Payslips />} />
-      <Route path="/user/settings" element={<UserSettings />} /> {/* <-- THIS IS NOW SIMPLIFIED */}
-      <Route path="/user" element={<Navigate to="/user/dashboard" />} /> {/* <-- I added this for better UX */}
+      <Route path="/user/settings" element={<UserSettings />} />
+      <Route path="/user" element={<Navigate to="/user/dashboard" />} />
 
       {/* --- 404 Not Found Page --- */}
       <Route path="*" element={
-        <div style={{ padding: '50px', textAlign: 'center' }}>
-          <h1>404 - Page Not Found</h1>
-          <p>The page you are looking for does not exist.</p>
-          <Link to="/" style={{ color: 'blue', textDecoration: 'underline' }}>Go to Homepage</Link>
+        <div style={{ padding: '50px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+          <h1 style={{ fontSize: '48px', color: '#333' }}>404 - Page Not Found</h1>
+          <p style={{ fontSize: '18px', color: '#666' }}>The page you are looking for does not exist.</p>
+          <Link to="/" style={{ color: '#007bff', textDecoration: 'underline', fontSize: '18px', marginTop: '20px', display: 'inline-block' }}>Go to Homepage</Link>
         </div>
       } />
     </Routes>
