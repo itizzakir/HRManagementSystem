@@ -26,7 +26,7 @@ const Navbar = () => {
                         to="/signup/admin"
                         className="bg-white text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors"
                     >
-                        Admin Signup
+                        Signup
                     </Link>
                 </div>
             </nav>
