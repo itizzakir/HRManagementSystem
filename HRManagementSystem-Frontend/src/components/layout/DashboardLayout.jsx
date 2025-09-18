@@ -2,12 +2,27 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     WorkBridgeLogoIcon,
-    ChartBarIcon, UsersIcon, BriefcaseIcon, CurrencyDollarIcon,
-    CalendarDaysIcon, UserCircleIcon, CogIcon, ShieldCheckIcon, LogoutIcon, DocumentTextIcon
-} from '../ui/Icons'; // Ensure all icons are correctly imported from your Icons.jsx
+    ChartBarIcon,
+    UsersIcon,
+    BriefcaseIcon,
+    CurrencyDollarIcon,
+    CalendarDaysIcon,
+    UserCircleIcon,
+    CogIcon,
+    ShieldCheckIcon,
+    LogoutIcon,
+    DocumentTextIcon
+} from '../ui/Icons'; // Ensure this path is correct for your project
 
 const SidebarLink = ({ icon, text, to, active }) => (
-    <Link to={to} className={`flex items-center px-4 py-2.5 rounded-lg transition-colors duration-200 ${active ? 'bg-green-700 text-white' : 'text-gray-300 hover:bg-green-700 hover:text-white'}`}>
+    <Link
+        to={to}
+        className={`flex items-center px-4 py-2.5 rounded-lg transition-colors duration-200 ${
+            active
+                ? 'bg-green-700 text-white'
+                : 'text-gray-300 hover:bg-green-700 hover:text-white'
+        }`}
+    >
         {icon}
         <span className="ml-3">{text}</span>
     </Link>
@@ -15,36 +30,46 @@ const SidebarLink = ({ icon, text, to, active }) => (
 
 const DashboardLayout = ({ children, role, title, userName, userEmail }) => {
     const navigate = useNavigate();
-    const [isSidebarOpen, setSidebarOpen] = useState(true); // Default to open for larger screens
+    const [isSidebarOpen, setSidebarOpen] = useState(true);
 
-    const commonLinks = [
-        { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '/admin/profile' }, // Specific path for admin
-        { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '/admin/settings' }, // Specific path for admin
-    ];
-
+    // This data structure separates main links from footer links for each role
     const roleLinks = {
-        admin: [
-            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Dashboard', to: '/admin/dashboard' },
-            { icon: <UsersIcon className="h-5 w-5" />, text: 'User Management', to: '/admin/user-management' },
-            { icon: <CogIcon className="h-5 w-5" />, text: 'System Settings', to: '/admin/system-settings' },
-            { icon: <ShieldCheckIcon className="h-5 w-5" />, text: 'Compliance', to: '/admin/compliance' },
-            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Reports', to: '/admin/reports' },
-        ],
-        // Placeholder for other roles, as requested in the initial full solution
-        hr: [
-            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Dashboard', to: '/hr/dashboard' },
-            { icon: <UsersIcon className="h-5 w-5" />, text: 'Employees', to: '#' },
-            { icon: <BriefcaseIcon className="h-5 w-5" />, text: 'Recruitment', to: '#' },
-            { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '#' },
-            { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payroll', to: '#' },
-            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Performance', to: '#' },
-        ],
-        user: [
-            { icon: <ChartBarIcon className="h-5 w-5" />, text: 'My Dashboard', to: '/user/dashboard' },
-            { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '#' },
-            { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payslips', to: '#' },
-            { icon: <DocumentTextIcon className="h-5 w-5" />, text: 'Documents', to: '#' },
-        ],
+        admin: {
+            mainNav: [
+                { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Dashboard', to: '/admin/dashboard' },
+                { icon: <UsersIcon className="h-5 w-5" />, text: 'User Management', to: '/admin/user-management' },
+                { icon: <CogIcon className="h-5 w-5" />, text: 'System Settings', to: '/admin/system-settings' },
+                { icon: <ShieldCheckIcon className="h-5 w-5" />, text: 'Compliance', to: '/admin/compliance' },
+                { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Reports', to: '/admin/reports' },
+            ],
+            footerNav: [
+                { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '/admin/profile' },
+                { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '/admin/settings' },
+            ]
+        },
+        hr: {
+            mainNav: [
+                { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Dashboard', to: '/hr/dashboard' },
+                { icon: <UsersIcon className="h-5 w-5" />, text: 'Employees', to: '#' },
+                { icon: <BriefcaseIcon className="h-5 w-5" />, text: 'Recruitment', to: '#' },
+                { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '#' },
+            ],
+            footerNav: [
+                { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '#' }, // Update with HR profile link later
+                { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' }, // Update with HR settings link later
+            ]
+        },
+        user: {
+            mainNav: [
+                { icon: <ChartBarIcon className="h-5 w-5" />, text: 'My Dashboard', to: '/user/dashboard' },
+                { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '/user/leave-application' },
+                { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payslips', to: '/user/payslips' },
+            ],
+            footerNav: [
+                { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '/user/profile' },
+                { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '/user/settings' },
+            ]
+        },
     };
 
     const handleLogout = () => {
@@ -60,13 +85,21 @@ const DashboardLayout = ({ children, role, title, userName, userEmail }) => {
                     <WorkBridgeLogoIcon />
                     {isSidebarOpen && <span className="ml-2 text-xl font-bold">WorkBridge</span>}
                 </div>
+
+                {/* Main Navigation Section (Top) */}
                 <nav className="flex-1 px-4 py-6 space-y-2">
-                    {roleLinks[role].map(link => (
+                    {roleLinks[role].mainNav.map(link => (
                         <SidebarLink key={link.text} {...link} active={window.location.pathname === link.to} />
                     ))}
                 </nav>
+
+                {/* Footer Navigation Section (Bottom) */}
                 <div className="px-4 py-6 border-t border-green-900 space-y-2">
-                    {commonLinks.map(link => <SidebarLink key={link.text} {...link} />)}
+                    {/* Render the footer links here */}
+                    {roleLinks[role].footerNav.map(link => (
+                        <SidebarLink key={link.text} {...link} active={window.location.pathname === link.to} />
+                    ))}
+                    {/* Logout button is separate */}
                     <button onClick={handleLogout} className="flex items-center w-full px-4 py-2.5 rounded-lg text-gray-300 hover:bg-red-700 hover:text-white">
                         <LogoutIcon className="h-5 w-5"/>
                         {isSidebarOpen && <span className="ml-3">Logout</span>}
@@ -94,7 +127,7 @@ const DashboardLayout = ({ children, role, title, userName, userEmail }) => {
                         <UserCircleIcon className="h-10 w-10 text-gray-600" />
                     </div>
                 </header>
-                
+
                 {/* Content */}
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
                     {children}

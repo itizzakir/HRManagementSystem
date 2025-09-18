@@ -1,5 +1,4 @@
 import React from 'react';
-// The fix is on the next line: adding 'Link' to the import
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
 
 // --- Landing and Auth Pages ---
@@ -21,6 +20,7 @@ import UserProfile from './pages/dashboards/UserDashboard/UserProfile';
 import LeaveApplication from './pages/dashboards/UserDashboard/LeaveApplication';
 import Payslips from './pages/dashboards/UserDashboard/Payslips';
 import UserSettings from './pages/dashboards/UserDashboard/UserSetting';
+import UserProfileEdit from './pages/dashboards/UserDashboard/UserProfileEdit';
 
 // --- All Admin Section Pages ---
 import UserManagementPage from './pages/dashboards/AdminDashboard/UserManagement';
@@ -29,7 +29,6 @@ import CompliancePage from './pages/dashboards/AdminDashboard/Compliance';
 import ReportsPage from './pages/dashboards/AdminDashboard/ReportsPage';
 import ProfilePage from './pages/dashboards/AdminDashboard/ProfilePage';
 import SettingsPage from './pages/dashboards/AdminDashboard/SettingsPage';
-
 
 function App() {
   return (
@@ -56,20 +55,20 @@ function App() {
       {/* --- HR Dashboard Route (Example) --- */}
       <Route path="/hr/dashboard" element={<HrDashboard />} />
 
-      {/* --- User Routes --- */}
+      {/* --- User Routes (Now clean and consistent) --- */}
       <Route path="/user/dashboard" element={<UserDashboard />} />
       <Route path="/user/profile" element={<UserProfile />} />
+      <Route path="/user/profile/edit" element={<UserProfileEdit />} />
       <Route path="/user/leave-application" element={<LeaveApplication />} />
       <Route path="/user/payslips" element={<Payslips />} />
-      <Route path="/user/settings" emement={<UserSettings />} />
-      <Route path="/user" element={<Navigate to="/user/dashboard" />} />
+      <Route path="/user/settings" element={<UserSettings />} /> {/* <-- THIS IS NOW SIMPLIFIED */}
+      <Route path="/user" element={<Navigate to="/user/dashboard" />} /> {/* <-- I added this for better UX */}
 
       {/* --- 404 Not Found Page --- */}
       <Route path="*" element={
         <div style={{ padding: '50px', textAlign: 'center' }}>
           <h1>404 - Page Not Found</h1>
           <p>The page you are looking for does not exist.</p>
-          {/* This Link component is what caused the error. It will now work correctly. */}
           <Link to="/" style={{ color: 'blue', textDecoration: 'underline' }}>Go to Homepage</Link>
         </div>
       } />

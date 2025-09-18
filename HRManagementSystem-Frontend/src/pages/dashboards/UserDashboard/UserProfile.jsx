@@ -19,10 +19,13 @@ const UserProfile = () => {
           <div className="bg-white p-6 rounded-lg shadow w-full">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-bold">Personal Details</h2>
-              <button className="flex items-center space-x-1 text-gray-600 hover:text-gray-900">
-                <PencilIcon className="h-5 w-5" />
-                <span>Edit</span>
-              </button>
+<button
+  className="flex items-center space-x-1 text-gray-600 hover:text-gray-900"
+  onClick={() => window.location.href = "/user/profile/edit"}
+>
+  <PencilIcon className="h-5 w-5" />
+  <span>Edit</span>
+</button>
             </div>
             <div className="flex flex-col items-center space-y-6">
               <div className="bg-yellow-400 rounded-full p-6">

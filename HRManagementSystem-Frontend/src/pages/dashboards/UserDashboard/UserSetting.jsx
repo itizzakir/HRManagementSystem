@@ -1,69 +1,74 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+// Make sure this path is correct for your project structure
+import DashboardLayout from '../../../components/layout/DashboardLayout'; 
 
 const UserSettings = () => {
-  const navigate = useNavigate();
-  const [settings, setSettings] = useState({
+  // State and handlers for the settings page would go here
+  const [personalSettings, setPersonalSettings] = useState({
     emailNotifications: true,
-    language: "en",
+    darkMode: false,
+    language: 'en-US',
   });
 
-  const handleInputChange = (e) => {
-    const { name, type, checked, value } = e.target;
-    setSettings((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setPersonalSettings(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
-  const handleSave = () => {
-    alert("User settings saved successfully!");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Settings saved! (Simulated)");
   };
 
   return (
-    <div className="p-8">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
-      >
-        Back
-      </button>
-      <div className="max-w-3xl mx-auto bg-white rounded shadow p-8">
-        <h2 className="text-2xl font-semibold mb-6">User Settings</h2>
-      <div className="mb-4">
-        <label className="inline-flex items-center">
-          <input
-            type="checkbox"
-            name="emailNotifications"
-            checked={settings.emailNotifications}
-            onChange={handleInputChange}
-            className="form-checkbox"
-          />
-          <span className="ml-2">Enable Email Notifications</span>
-        </label>
+    // The page now includes its own layout
+    <DashboardLayout
+      role="user"
+      title="Settings"
+      userName="Aftab Alam" // This could come from a global state/context later
+      userEmail="user@workbridge.com"
+    >
+      <div className="p-8">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Account Settings</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Example Setting: Dark Mode */}
+            <div className="flex items-center justify-between border-b pb-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-900">Enable Dark Mode</label>
+                <p className="text-xs text-gray-500">Switch to a darker theme for your dashboard.</p>
+              </div>
+              <input
+                type="checkbox"
+                name="darkMode"
+                checked={personalSettings.darkMode}
+                onChange={handleChange}
+                className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+              />
+            </div>
+            {/* Example Setting: Notifications */}
+            <div className="flex items-center justify-between border-b pb-4">
+               <div>
+                <label className="block text-sm font-medium text-gray-900">Email Notifications</label>
+                <p className="text-xs text-gray-500">Receive updates and alerts in your inbox.</p>
+              </div>
+              <input
+                type="checkbox"
+                name="emailNotifications"
+                checked={personalSettings.emailNotifications}
+                onChange={handleChange}
+                className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+              />
+            </div>
+            <div className="pt-5 text-right">
+              <button type="submit" className="px-6 py-2 rounded-md text-sm font-medium text-white bg-green-700 hover:bg-green-800">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-
-      <div className="mb-6">
-        <label className="block mb-2">Language</label>
-        <select
-          name="language"
-          value={settings.language}
-          onChange={handleInputChange}
-          className="border p-2 rounded w-full"
-        >
-          <option value="en">English</option>
-          <option value="es">Spanish</option>
-          <option value="fr">French</option>
-        </select>
-      </div>
-      <button
-        onClick={handleSave}
-        className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
-      >
-        Save Settings
-      </button>
-      </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
