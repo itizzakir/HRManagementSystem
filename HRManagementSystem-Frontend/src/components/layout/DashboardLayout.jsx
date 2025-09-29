@@ -48,15 +48,18 @@ const DashboardLayout = ({ children, role, title, userName, userEmail }) => {
             ]
         },
         hr: {
+            // --- THIS IS THE CORRECTED SECTION ---
             mainNav: [
                 { icon: <ChartBarIcon className="h-5 w-5" />, text: 'Dashboard', to: '/hr/dashboard' },
-                { icon: <UsersIcon className="h-5 w-5" />, text: 'Employees', to: '#' },
-                { icon: <BriefcaseIcon className="h-5 w-5" />, text: 'Recruitment', to: '#' },
-                { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '#' },
+                { icon: <UsersIcon className="h-5 w-5" />, text: 'Employees', to: '/hr/employees' },
+                { icon: <BriefcaseIcon className="h-5 w-5" />, text: 'Recruitment', to: '/hr/recruitment' },
+                { icon: <CalendarDaysIcon className="h-5 w-5" />, text: 'Leave', to: '/hr/leave' },
+                { icon: <CurrencyDollarIcon className="h-5 w-5" />, text: 'Payroll', to: '/hr/payroll' },
             ],
             footerNav: [
-                { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '#' }, // Update with HR profile link later
-                { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' }, // Update with HR settings link later
+                // Update these with real HR Profile/Settings pages when you create them
+                { icon: <UserCircleIcon className="h-5 w-5" />, text: 'Profile', to: '#' },
+                { icon: <CogIcon className="h-5 w-5" />, text: 'Settings', to: '#' },
             ]
         },
         user: {

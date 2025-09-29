@@ -1,18 +1,19 @@
 import React from 'react';
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 // --- Landing and Auth Pages ---
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import AdminSignup from './pages/AdminSignup';
+import CareersPage from './pages/CareersPage';
 
 // --- Onboarding Flow Pages ---
 import ForceResetPassword from './pages/ForcedResetPassword';
-// import AcceptInvitePage from './pages/AcceptInvitePage';
+import AcceptInvitePage from './pages/AcceptInvitePage';
 
 // --- Dashboard Home Pages ---
 import AdminDashboard from './pages/dashboards/AdminDashboard/AdminDashboard';
-import HrDashboard from './pages/dashboards/HrDashboard';
 import UserDashboard from './pages/dashboards/UserDashboard/UserDashboard';
 
 // --- User Dashboard Sub-Pages ---
@@ -30,17 +31,54 @@ import ReportsPage from './pages/dashboards/AdminDashboard/ReportsPage';
 import ProfilePage from './pages/dashboards/AdminDashboard/ProfilePage';
 import SettingsPage from './pages/dashboards/AdminDashboard/SettingsPage';
 
+
+import HrDashboard from './pages/dashboards/HrDashboard/HrDashboard';
+import EmployeesPage from './pages/dashboards/HrDashboard/EmployeesPage';
+import RecruitmentPage from './pages/dashboards/HrDashboard/RecruitmentPage';
+import LeaveManagementPage from './pages/dashboards/HrDashboard/LeaveManagementPage';
+import PayrollPage from './pages/dashboards/HrDashboard/PayrollPage';
+// import HrProfilePage from './pages/dashboards/HrDashboard/HrProfilePage';
+// import HrSettingsPage from './pages/dashboards/HrDashboard/HrSettingsPage';
+// import HrProfileEditPage from './pages/dashboards/HrDashboard/HrProfileEditPage';
+
 function App() {
   return (
+
+<>
+     <Toaster 
+        position="top-right" // You can change the position
+        toastOptions={{
+          // Define default options
+          duration: 5000, // Toasts last for 5 seconds
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: 'green',
+              secondary: 'black',
+            },
+          },
+        }}
+      />
+
+
+
+
+
     <Routes>
       {/* --- Landing and Authentication Routes --- */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
+       <Route path="/careers" element={<CareersPage />} />
       <Route path="/signup/admin" element={<AdminSignup />} />
       
       {/* --- Onboarding Routes for New Users --- */}
+      <Route path="/accept-invite" element={<AcceptInvitePage />} />
       <Route path="/force-reset-password" element={<ForceResetPassword />} />
-      {/* <Route path="/accept-invite" element={<AcceptInvitePage />} /> */}
 
       {/* --- Admin Routes --- */}
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -52,8 +90,16 @@ function App() {
       <Route path="/admin/settings" element={<SettingsPage />} />
       <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
 
-      {/* --- HR Dashboard Route (Example) --- */}
+      {/* --- HR Routes --- */}
       <Route path="/hr/dashboard" element={<HrDashboard />} />
+      <Route path="/hr/employees" element={<EmployeesPage />} />
+      <Route path="/hr/recruitment" element={<RecruitmentPage />} />
+      <Route path="/hr/leave" element={<LeaveManagementPage />} />
+      <Route path="/hr/payroll" element={<PayrollPage />} />
+      {/* <Route path="/hr/profile" element={<HrProfilePage />} /> */}
+      {/* <Route path="/hr/profile/edit" element={<HrProfileEditPage />} /> */}
+      {/* <Route path="/hr/settings" element={<HrSettingsPage />} /> */}
+      <Route path="/hr" element={<Navigate to="/hr/dashboard" />} />
 
       {/* --- User Routes (Now clean and consistent) --- */}
       <Route path="/user/dashboard" element={<UserDashboard />} />
@@ -73,6 +119,7 @@ function App() {
         </div>
       } />
     </Routes>
+    </>
   );
 }
 
