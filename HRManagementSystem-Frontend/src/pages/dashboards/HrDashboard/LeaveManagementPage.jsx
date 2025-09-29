@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -52,6 +53,16 @@ const LeaveManagementPage = () => {
     };
 
     // Helper function to get the correct color for each status badge
+=======
+// src/pages/dashboards/HrDashboard/LeaveManagementPage.js
+import React, { useState } from 'react';
+import DashboardLayout from '../../../components/layout/DashboardLayout';
+import { leaveRequests as initialRequests } from '../../../components/data/mockHrData';
+
+const LeaveManagementPage = () => {
+    const [leaveRequests, setLeaveRequests] = useState(initialRequests);
+    
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
     const getStatusColor = (status) => {
         switch (status) {
             case 'Approved': return 'bg-green-100 text-green-800';
@@ -75,6 +86,7 @@ const LeaveManagementPage = () => {
                         <table className="min-w-full text-left bg-white">
                             <thead className="border-b bg-gray-50">
                                 <tr>
+<<<<<<< HEAD
                                     <th className="p-3 font-semibold text-gray-600 uppercase">Employee</th>
                                     <th className="p-3 font-semibold text-gray-600 uppercase">Leave Type</th>
                                     <th className="p-3 font-semibold text-gray-600 uppercase">Dates</th>
@@ -122,6 +134,38 @@ const LeaveManagementPage = () => {
                                         </tr>
                                     ))
                                 )}
+=======
+                                    <th className="p-3 font-semibold text-gray-600">Employee</th>
+                                    <th className="p-3 font-semibold text-gray-600">Leave Type</th>
+                                    <th className="p-3 font-semibold text-gray-600">Dates</th>
+                                    <th className="p-3 font-semibold text-gray-600">Days</th>
+                                    <th className="p-3 font-semibold text-gray-600">Status</th>
+                                    <th className="p-3 font-semibold text-gray-600">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {leaveRequests.map(req => (
+                                    <tr key={req.id} className="border-b hover:bg-gray-50">
+                                        <td className="p-3 font-medium text-gray-800">{req.employeeName}</td>
+                                        <td className="p-3 text-gray-700">{req.leaveType}</td>
+                                        <td className="p-3 text-gray-700">{req.startDate} to {req.endDate}</td>
+                                        <td className="p-3 text-gray-700">{req.days}</td>
+                                        <td className="p-3">
+                                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(req.status)}`}>
+                                                {req.status}
+                                            </span>
+                                        </td>
+                                        <td className="p-3">
+                                            {req.status === 'Pending' && (
+                                                <div className="flex space-x-2">
+                                                    <button className="text-green-600 hover:underline text-sm">Approve</button>
+                                                    <button className="text-red-600 hover:underline text-sm">Deny</button>
+                                                </div>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                             </tbody>
                         </table>
                     </div>

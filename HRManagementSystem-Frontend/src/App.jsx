@@ -10,10 +10,17 @@ import CareersPage from './pages/CareersPage';
 
 // --- Onboarding Flow Pages ---
 import ForceResetPassword from './pages/ForcedResetPassword';
+<<<<<<< HEAD
 import AcceptInvitePage from './pages/AcceptInvitePage';
 
 // --- Dashboard Home Pages ---
 import AdminDashboard from './pages/dashboards/AdminDashboard/AdminDashboard';
+=======
+
+// --- Dashboard Home Pages ---
+import AdminDashboard from './pages/dashboards/AdminDashboard/AdminDashboard';
+import HrDashboard from './pages/dashboards/HrDashboard/HrDashboard';
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
 import UserDashboard from './pages/dashboards/UserDashboard/UserDashboard';
 
 // --- User Dashboard Sub-Pages ---
@@ -31,15 +38,25 @@ import ReportsPage from './pages/dashboards/AdminDashboard/ReportsPage';
 import ProfilePage from './pages/dashboards/AdminDashboard/ProfilePage';
 import SettingsPage from './pages/dashboards/AdminDashboard/SettingsPage';
 
+<<<<<<< HEAD
 
 import HrDashboard from './pages/dashboards/HrDashboard/HrDashboard';
+=======
+// --- HR Section Pages ---
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
 import EmployeesPage from './pages/dashboards/HrDashboard/EmployeesPage';
 import RecruitmentPage from './pages/dashboards/HrDashboard/RecruitmentPage';
 import LeaveManagementPage from './pages/dashboards/HrDashboard/LeaveManagementPage';
 import PayrollPage from './pages/dashboards/HrDashboard/PayrollPage';
+<<<<<<< HEAD
 // import HrProfilePage from './pages/dashboards/HrDashboard/HrProfilePage';
 // import HrSettingsPage from './pages/dashboards/HrDashboard/HrSettingsPage';
 // import HrProfileEditPage from './pages/dashboards/HrDashboard/HrProfileEditPage';
+=======
+import HrProfilePage from './pages/dashboards/HrDashboard/HrProfilePage';
+import HrSettingsPage from './pages/dashboards/HrDashboard/HrSettingsPage';
+import HrProfileEditPage from './pages/dashboards/HrDashboard/HrProfileEditPage';
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
 
 function App() {
   return (
@@ -96,26 +113,32 @@ function App() {
       <Route path="/hr/recruitment" element={<RecruitmentPage />} />
       <Route path="/hr/leave" element={<LeaveManagementPage />} />
       <Route path="/hr/payroll" element={<PayrollPage />} />
+<<<<<<< HEAD
       {/* <Route path="/hr/profile" element={<HrProfilePage />} /> */}
       {/* <Route path="/hr/profile/edit" element={<HrProfileEditPage />} /> */}
       {/* <Route path="/hr/settings" element={<HrSettingsPage />} /> */}
+=======
+      <Route path="/hr/profile" element={<HrProfilePage />} />
+      <Route path="/hr/profile/edit" element={<HrProfileEditPage />} />
+      <Route path="/hr/settings" element={<HrSettingsPage />} />
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
       <Route path="/hr" element={<Navigate to="/hr/dashboard" />} />
 
-      {/* --- User Routes (Now clean and consistent) --- */}
+      {/* --- User Routes --- */}
       <Route path="/user/dashboard" element={<UserDashboard />} />
       <Route path="/user/profile" element={<UserProfile />} />
       <Route path="/user/profile/edit" element={<UserProfileEdit />} />
       <Route path="/user/leave-application" element={<LeaveApplication />} />
       <Route path="/user/payslips" element={<Payslips />} />
-      <Route path="/user/settings" element={<UserSettings />} /> {/* <-- THIS IS NOW SIMPLIFIED */}
-      <Route path="/user" element={<Navigate to="/user/dashboard" />} /> {/* <-- I added this for better UX */}
+      <Route path="/user/settings" element={<UserSettings />} />
+      <Route path="/user" element={<Navigate to="/user/dashboard" />} />
 
       {/* --- 404 Not Found Page --- */}
       <Route path="*" element={
-        <div style={{ padding: '50px', textAlign: 'center' }}>
-          <h1>404 - Page Not Found</h1>
-          <p>The page you are looking for does not exist.</p>
-          <Link to="/" style={{ color: 'blue', textDecoration: 'underline' }}>Go to Homepage</Link>
+        <div style={{ padding: '50px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+          <h1 style={{ fontSize: '48px', color: '#333' }}>404 - Page Not Found</h1>
+          <p style={{ fontSize: '18px', color: '#666' }}>The page you are looking for does not exist.</p>
+          <Link to="/" style={{ color: '#007bff', textDecoration: 'underline', fontSize: '18px', marginTop: '20px', display: 'inline-block' }}>Go to Homepage</Link>
         </div>
       } />
     </Routes>

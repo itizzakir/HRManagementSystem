@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -9,6 +10,17 @@ import UserActionModal from '../../../components/modals/UserActionModel';
 import PostJobModal from '../../../components/modals/PostJobModal';
 
 // StatCard component remains the same
+=======
+// src/pages/dashboards/HrDashboard/HrDashboard.js
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import DashboardLayout from '../../../components/layout/DashboardLayout';
+import { UsersIcon, BriefcaseIcon, CurrencyDollarIcon, CalendarDaysIcon } from '../../../components/ui/Icons';
+import { employees, leaveRequests, jobApplicants } from '../../../components/data/mockHrData';
+import CreateUserModal from '../../../components/modals/CreateUserModal';
+import PostJobModal from '../../../components/modals/PostJobModal';
+
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
 const StatCard = ({ title, value, icon, color }) => (
     <div className="bg-white p-6 rounded-lg shadow">
         <div className={`text-3xl ${color} mb-2`}>{icon}</div>
@@ -18,6 +30,7 @@ const StatCard = ({ title, value, icon, color }) => (
 );
 
 const HrDashboard = () => {
+<<<<<<< HEAD
     // --- (2) ADD STATE TO HOLD THE LOGGED-IN USER'S INFO ---
     const [currentUser, setCurrentUser] = useState(null);
 
@@ -53,12 +66,28 @@ const HrDashboard = () => {
     
     const handleOnboardComplete = (newEmployeeData) => {
         toast.success(`Successfully onboarded ${newEmployeeData.fullName}!`);
+=======
+    const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
+    const [isPostJobModalOpen, setIsPostJobModalOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const pendingLeaveRequests = leaveRequests.filter(req => req.status === 'Pending');
+
+    const handleApprove = (id) => {
+      alert(`Leave request ID ${id} approved! (Simulated)`);
+      // Here you would update the state or call an API
+    };
+
+    const handleDeny = (id) => {
+      alert(`Leave request ID ${id} denied! (Simulated)`);
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
     };
 
     return (
         <DashboardLayout
             role="hr"
             title="HR Dashboard"
+<<<<<<< HEAD
             // --- (4) USE THE DYNAMIC DATA FROM STATE ---
             // Provide sensible fallbacks while the user data is being loaded
             userName={currentUser?.fullName || 'HR Manager'} 
@@ -76,22 +105,39 @@ const HrDashboard = () => {
 
             <div className="p-8">
                 {/* Top Statistics Section */}
+=======
+            userName="Zakir Hussain"
+            userEmail="zakir.h@workbridge.com"
+        >
+            <CreateUserModal isOpen={isCreateUserModalOpen} onClose={() => setIsCreateUserModalOpen(false)} onUserCreated={() => {}} />
+            <PostJobModal isOpen={isPostJobModalOpen} onClose={() => setIsPostJobModalOpen(false)} />
+
+            <div className="p-8">
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <StatCard title="Total Employees" value={employees.length} icon={<UsersIcon className="h-8 w-8" />} color="text-blue-500" />
                     <StatCard title="New Applicants" value={jobApplicants.length} icon={<BriefcaseIcon className="h-8 w-8" />} color="text-green-500" />
                     <StatCard title="Leave Requests" value={pendingLeaveRequests.length} icon={<CalendarDaysIcon className="h-8 w-8" />} color="text-yellow-500" />
+<<<<<<< HEAD
                     <StatCard title="Payroll Pending" value={'$310k'} icon={<CurrencyDollarIcon className="h-8 w-8" />} color="text-red-500" />
                 </div>
 
                 {/* Main Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column: Pending Leave Requests */}
+=======
+                    <StatCard title="Payroll Pending" value={'\$310k'} icon={<CurrencyDollarIcon className="h-8 w-8" />} color="text-red-500" />
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                     <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-xl font-semibold text-gray-800">Pending Leave Requests</h3>
                             <Link to="/hr/leave" className="text-sm font-semibold text-green-600 hover:underline">View All</Link>
                         </div>
                         <div className="space-y-3 max-h-80 overflow-y-auto">
+<<<<<<< HEAD
                             {pendingLeaveRequests.length > 0 ? (
                                 pendingLeaveRequests.map(req => (
                                     <div key={req.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
@@ -112,20 +158,47 @@ const HrDashboard = () => {
                     </div>
 
                     {/* Right Column: Quick Actions & Recruitment */}
+=======
+                            {pendingLeaveRequests.length > 0 ? pendingLeaveRequests.map(req => (
+                                <div key={req.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                                    <div>
+                                        <p className="font-semibold">{req.employeeName} <span className="text-sm text-gray-500 ml-2">({req.leaveType}: {req.days} days)</span></p>
+                                        <p className="text-sm text-gray-500">Dates: {req.startDate} to {req.endDate}</p>
+                                    </div>
+                                    <div className="space-x-2 flex-shrink-0">
+                                        <button onClick={() => handleApprove(req.id)} className="text-sm bg-green-100 text-green-700 font-semibold px-3 py-1 rounded-md hover:bg-green-200">Approve</button>
+                                        <button onClick={() => handleDeny(req.id)} className="text-sm bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-md hover:bg-red-200">Deny</button>
+                                    </div>
+                                </div>
+                            )) : <p className="text-gray-500 text-center py-4">No pending leave requests.</p>}
+                        </div>
+                    </div>
+
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                     <div className="space-y-8">
                         <div className="bg-white p-6 rounded-lg shadow">
                             <h3 className="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
                             <ul className="space-y-3">
+<<<<<<< HEAD
                                 <li><button onClick={() => setIsUserModalOpen(true)} className="block w-full text-left bg-blue-100 text-blue-800 p-3 rounded-lg hover:bg-blue-200 font-semibold transition-colors">+ Onboard New Employee</button></li>
+=======
+                                <li><button onClick={() => setIsCreateUserModalOpen(true)} className="block w-full text-left bg-blue-100 text-blue-800 p-3 rounded-lg hover:bg-blue-200 font-semibold transition-colors">+ Onboard New Employee</button></li>
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                                 <li><button onClick={() => setIsPostJobModalOpen(true)} className="block w-full text-left bg-green-100 text-green-800 p-3 rounded-lg hover:bg-green-200 font-semibold transition-colors">Post a New Job</button></li>
                                 <li><button onClick={() => navigate('/hr/payroll')} className="block w-full text-left bg-yellow-100 text-yellow-800 p-3 rounded-lg hover:bg-yellow-200 font-semibold transition-colors">Run Payroll</button></li>
                             </ul>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow">
                              <h3 className="text-xl font-semibold text-gray-800 mb-4">Recruitment Pipeline</h3>
+<<<<<<< HEAD
                               <p className="text-sm text-gray-500 mb-3">{jobPostings[0].title}</p>
                               <div className="space-y-2 text-sm">
                                 <p className="flex justify-between"><strong>Applied:</strong> <span>{jobApplicants.filter(a => a.jobPostingId === jobPostings[0].id).length}</span></p>
+=======
+                              <p className="text-sm text-gray-500 mb-3">Senior Frontend Developer</p>
+                              <div className="space-y-2 text-sm">
+                                <p className="flex justify-between"><strong>Applied:</strong> <span>12</span></p>
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
                                 <p className="flex justify-between"><strong>Screening:</strong> <span>4</span></p>
                                 <p className="flex justify-between"><strong>Interview:</strong> <span>2</span></p>
                                 <p className="flex justify-between"><strong>Offer:</strong> <span>1</span></p>

@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const PostJobModal = ({ isOpen, onClose, onJobPosted }) => {
+=======
+// src/components/modals/PostJobModal.js
+import React, { useState } from 'react';
+
+const PostJobModal = ({ isOpen, onClose }) => {
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
   const [jobDetails, setJobDetails] = useState({
     title: '',
     department: '',
     location: '',
+<<<<<<< HEAD
+=======
+    type: 'Full-time',
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
     description: '',
   });
 
@@ -19,6 +30,7 @@ const PostJobModal = ({ isOpen, onClose, onJobPosted }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
 
     // The API call is defined as a promise for use with react-hot-toast
     const promise = axios.post('http://localhost:8080/api/hr/job-postings', jobDetails, {
@@ -35,6 +47,11 @@ const PostJobModal = ({ isOpen, onClose, onJobPosted }) => {
       },
       error: (err) => `Error: ${err.response?.data?.message || err.message}`,
     });
+=======
+    console.log("New Job Posting:", jobDetails);
+    alert(`Job "${jobDetails.title}" posted successfully! (Simulated)`);
+    onClose(); // Close modal after submission
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
   };
 
   return (
@@ -45,6 +62,7 @@ const PostJobModal = ({ isOpen, onClose, onJobPosted }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">Job Title</label>
+<<<<<<< HEAD
               <input type="text" name="title" id="title" value={jobDetails.title} onChange={handleChange} className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300" required />
             </div>
             <div>
@@ -59,6 +77,33 @@ const PostJobModal = ({ isOpen, onClose, onJobPosted }) => {
           <div>
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">Job Description</label>
             <textarea name="description" id="description" value={jobDetails.description} onChange={handleChange} rows="5" className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300" required />
+=======
+              <input type="text" name="title" id="title" value={jobDetails.title} onChange={handleChange} className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" required />
+            </div>
+            <div>
+              <label htmlFor="department" className="block text-sm font-medium text-gray-700">Department</label>
+              <input type="text" name="department" id="department" value={jobDetails.department} onChange={handleChange} className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" required />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
+              <input type="text" name="location" id="location" value={jobDetails.location} onChange={handleChange} className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="e.g., Remote or City, State" required />
+            </div>
+            <div>
+              <label htmlFor="type" className="block text-sm font-medium text-gray-700">Job Type</label>
+              <select name="type" id="type" value={jobDetails.type} onChange={handleChange} className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option>Full-time</option>
+                <option>Part-time</option>
+                <option>Contract</option>
+                <option>Internship</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Job Description</label>
+            <textarea name="description" id="description" value={jobDetails.description} onChange={handleChange} rows="5" className="mt-1 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" required />
+>>>>>>> 4936037c382d45c4279251d0c85fb69c633de12a
           </div>
           <div className="flex justify-end space-x-4 pt-4">
             <button type="button" onClick={onClose} className="px-6 py-2 rounded-md text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">Cancel</button>
