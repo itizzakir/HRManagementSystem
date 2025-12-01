@@ -1,4 +1,4 @@
-<!--  W O R K B R I D G E - Animated README   -->
+<!--  W O R K B R I D G E - Animated README  -->
 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?size=28&duration=3500&color=00AEEF&center=true&vCenter=true&width=700&lines=✨+WELCOME+TO+WORKBRIDGE+✨;A+Modern+HR+Management+System;React+Tailwind+%2B+SpringBoot+%2B+MySQL;Smart.+Secure.+Scalable." />
